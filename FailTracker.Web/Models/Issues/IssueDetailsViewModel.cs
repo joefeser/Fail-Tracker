@@ -1,13 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using AutoMapper;
 using FailTracker.Core.Domain;
-using FailTracker.Web.Infrastructure.Mapping;
 
 namespace FailTracker.Web.Models.Issues
 {
-	public class IssueDetailsViewModel : IMapFrom<Issue>
+	public class IssueDetailsViewModel
 	{
 		public Guid ID { get; set; }
 

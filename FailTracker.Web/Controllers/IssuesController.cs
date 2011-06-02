@@ -24,7 +24,15 @@ namespace FailTracker.Web.Controllers
 		public ActionResult Dashboard()
 		{
 			var issues = (from i in _issues.Query()
-			              select Mapper.Map<Issue, IssueViewModel>(i)).ToArray();
+						  let assignedTo = i.AssignedTo != null ? i.AssignedTo.EmailAddress : null
+			              select  new IssueViewModel
+			                      	{
+			                      		ID = i.ID,
+										AssignedTo = assignedTo,
+										Size = i.Size,
+										Title = i.Title,
+										Type = i.Type
+			                      	}).ToArray();
 
 			return View(issues);
 		}
@@ -57,7 +65,25 @@ namespace FailTracker.Web.Controllers
 
 		public ActionResult View(Guid id)
 		{
-			var model = Mapper.Map<Issue, IssueDetailsViewModel>(_issues.Query().Single(i => i.ID == id));
+			var issue = _issues.Query().Single(i => i.ID == id);
+			var model = new IssueDetailsViewModel
+			            	{
+			            		ID = issue.ID,
+			            		Title = issue.Title,
+			            		AssignedToEmailAddress = issue.AssignedTo != null ? issue.AssignedTo.EmailAddress : null,
+			            		CreatedAt = issue.CreatedAt,
+			            		CreatedBy = issue.CreatedBy.EmailAddress,
+			            		Description = issue.Description,
+			            		Size = issue.Size,
+			            		Type = issue.Type,
+			            		Changes = (from c in issue.Changes
+			            		           select new ChangeViewModel
+			            		                  	{
+			            		                  		EditedBy = c.EditedBy.EmailAddress,
+			            		                  		ChangedAt = c.ChangedAt,
+			            		                  		Comments = c.Comments
+			            		                  	}).ToArray()
+			            	};
 
 			return View(model);
 		}
