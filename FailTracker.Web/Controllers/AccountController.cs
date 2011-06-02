@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.Security;
 using FailTracker.Core.Data;
 using FailTracker.Core.Domain;
 using FailTracker.Web.ActionResults;
@@ -34,13 +35,15 @@ namespace FailTracker.Web.Controllers
 				return View(new LogOnForm {EmailAddress = form.EmailAddress})
 						.WithErrorMessage("Invalid username or password.");
 			}
-			
-			return new LogOnResult(form.EmailAddress);
+
+			FormsAuthentication.SetAuthCookie(form.EmailAddress, true);
+			return Redirect("~/");
 		}
 
 		public ActionResult LogOff()
 		{
-			return new LogOffResult();
+			FormsAuthentication.SignOut();
+			return Redirect("~/");
 		}
 	}
 }
