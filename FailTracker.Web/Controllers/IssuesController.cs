@@ -9,7 +9,8 @@ using Microsoft.Web.Mvc;
 
 namespace FailTracker.Web.Controllers
 {
-	public class IssuesController : AuthorizeBaseController
+	[Authorize]
+	public class IssuesController : Controller
 	{
 		private readonly IRepository<Issue> _issues;
 		private readonly IRepository<User> _users;

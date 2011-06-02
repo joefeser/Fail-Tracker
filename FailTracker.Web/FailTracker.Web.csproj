@@ -74,7 +74,6 @@
     <Compile Include="ActionResults\LogOffResult.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AuthorizeBaseController.cs" />
     <Compile Include="Controllers\IssuesController.cs" />
     <Compile Include="ActionResults\LogOnResult.cs" />
     <Compile Include="ActionResults\StatusResult.cs" />
