@@ -3,7 +3,7 @@
 		var id = $(this).attr("data-issue-id");
 		$("#issue-preview-dialog")
 				.html("<em>Loading...</em>")
-				.dialog({ modal: true })
+				.dialog({ modal: true, width: 500, height: 350 })
 				.load(ViewBag.buildDetailsUrl(id) + "/delete-me");
 
 		//				//Error handing: function (response, status) {

@@ -2,15 +2,15 @@ var Site = {};
 var ViewBag = {};
 
 $(function () {
-	//Apply defaults
-	$("input[type=button], input[type=submit], a.button, span.button").button();
+//	//Apply defaults
+//	$("input[type=button], input[type=submit], a.button, span.button").button();
 
-	$.extend($.ui.dialog.prototype.options, {
-		width: 500,
-		height: 350
-	});
+//	$.extend($.ui.dialog.prototype.options, {
+//		width: 500,
+//		height: 350
+//	});
 
-	$.ajaxSetup({ traditional: true });
+//	$.ajaxSetup({ traditional: true });
 
 	//Initialize Site object
 	var statusTimeout = setTimeout(function () { }, 1);
@@ -76,6 +76,7 @@ $(function () {
 	//		$(".ui-dialog-content").dialog("close");
 	//		if (request.status === 401) {
 	//			$("#session-timeout-dialog").dialog({
+	//				width: 500, height: 350
 	//				modal: true,
 	//				buttons: {
 	//					Ok: function () {
