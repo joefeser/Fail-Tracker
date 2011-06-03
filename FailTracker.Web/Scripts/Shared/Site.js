@@ -33,10 +33,10 @@ $(function () {
 				of: container
 			});
 
-		statusTimeout = setTimeout(function () { 
+		statusTimeout = setTimeout(function () {
 			status.fadeOut(1500);
 		}, 5000);
-			
+
 	};
 
 	Site.confirm = function (options) {
@@ -70,22 +70,22 @@ $(function () {
 			});
 	};
 
-	//Attach global AJAX error handler
-	$(document).ajaxError(function (event, request, options) {
-		//Close all open dialogs
-		$(".ui-dialog-content").dialog("close");
-		if (request.status === 401) {
-			$("#session-timeout-dialog").dialog({
-				modal: true,
-				buttons: {
-					Ok: function () {
-						$(this).dialog("close");
-					}
-				}
-			});
-		}
-		else {
-			Site.showStatus("There was a problem with your last request. Please reload this page and try again.", "error");
-		}
-	});
+	//	//Attach global AJAX error handler
+	//	$(document).ajaxError(function (event, request, options) {
+	//		//Close all open dialogs
+	//		$(".ui-dialog-content").dialog("close");
+	//		if (request.status === 401) {
+	//			$("#session-timeout-dialog").dialog({
+	//				modal: true,
+	//				buttons: {
+	//					Ok: function () {
+	//						$(this).dialog("close");
+	//					}
+	//				}
+	//			});
+	//		}
+	//		else {
+	//			Site.showStatus("There was a problem with your last request. Please reload this page and try again.", "error");
+	//		}
+	//	});
 });
