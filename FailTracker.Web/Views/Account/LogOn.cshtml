@@ -7,7 +7,7 @@
 <h2>Log On</h2>
 @using (Html.BeginForm())
 {
-	<p>@Html.LabelFor(m => m.EmailAddress) @Html.TextBoxFor(m => m.EmailAddress)</p>
-	<p>@Html.LabelFor(m => m.Password) @Html.TextBoxFor(m => m.Password)</p>
+	<p>@Html.Label("EmailAddress") @Html.TextBox("EmailAddress")</p>
+	<p>@Html.Label("Password") @Html.Password("Password")</p>
 	<div class="control-box"><input type="submit" value="Log On" /></div>
 }
